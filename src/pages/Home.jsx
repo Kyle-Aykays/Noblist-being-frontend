@@ -3,7 +3,7 @@ import "../output.css";
 import '../assets/css/home.css'
 
 import Navbar from "../components/Navbar";
-
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 const Home = () => {
   const [checklist, setChecklist] = useState([]);
   const [error, setError] = useState("");
@@ -19,7 +19,7 @@ const Home = () => {
       // Fetch data for all checklist types simultaneously
       const responses = await Promise.all(
         checklistTypes.map((type) =>
-          fetch("http://localhost:8080/checklist/get", {
+          fetch(`${backendUrl}/checklist/get`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -61,7 +61,7 @@ const Home = () => {
    // Update task completion status in the database
    const toggleCompletion = async (userId, checklistType, taskId, isCompleted) => {
     try {
-      const response = await fetch(`http://localhost:8080/checklist/toggle-completion`, {
+      const response = await fetch(`${backendUrl}/checklist/toggle-completion`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { handleError, handleSuccess } from '../reusable-Components/utils';
 import { ToastContainer } from 'react-toastify';
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const Profile = () => {
     const [profile, setProfile] = useState({
@@ -48,7 +49,7 @@ const Profile = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:8080/profile/getprofile', {
+            const response = await fetch(`${backendUrl}/profile/getprofile`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -187,7 +188,7 @@ const Profile = () => {
         };
     
         try {
-            const response = await fetch("http://localhost:8080/profile/updateProfile", {
+            const response = await fetch(`${backendUrl}/profile/updateProfile`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -219,7 +220,7 @@ const Profile = () => {
             formData.append('profilePicture', file);
 
             try {
-                const response = await fetch('http://localhost:8080/profile/upload', {
+                const response = await fetch(`${backendUrl}/profile/upload`, {
                     method: 'POST',
                     body: formData,
                 });

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { handleError, handleSuccess } from '../reusable-Components/utils';
 import '../App.css';
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const Signup = () => {
     const [signupInfo, setSignupInfo] = useState({
@@ -27,7 +28,7 @@ const Signup = () => {
         }
     
         try {
-            const url = 'http://localhost:8080/auth/signup';
+            const url = `${backendUrl}/auth/signup`;
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -64,7 +65,7 @@ const Signup = () => {
         // window.location.href = 'http://localhost:8080/auth/google/';
         // setTimeout(() => navigate('/profile'), 2000);
 
-            window.location.href = 'http://localhost:8080/auth/google';
+            window.location.href = `${backendUrl}/auth/google`;
       
         
     };

@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import { handleError, handleSuccess } from '../reusable-Components/utils';
 import '../App.css';
 import '../assets/css/login.css';
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 const Login = () => {
     const [loginInfo, setLoginInfo] = useState({
@@ -29,7 +30,7 @@ const Login = () => {
         }
 
         try {
-            const url = 'http://localhost:8080/auth/login';
+            const url = `${backendUrl}/auth/login`;
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -63,7 +64,7 @@ const Login = () => {
 
     // Google OAuth login
     const handleGoogleLogin = () => {
-        window.location.href = 'http://localhost:8080/auth/google/';
+        window.location.href = `${backendUrl}/auth/google/`;
         setTimeout(() => navigate('/profile'), 2000);
 
     };
