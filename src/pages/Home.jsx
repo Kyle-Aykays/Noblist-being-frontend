@@ -3,7 +3,8 @@ import "../output.css";
 import '../assets/css/home.css'
 
 import Navbar from "../components/Navbar";
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
+console.log(backendUrl);
 const Home = () => {
   const [checklist, setChecklist] = useState([]);
   const [error, setError] = useState("");

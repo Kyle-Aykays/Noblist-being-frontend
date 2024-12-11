@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { handleError, handleSuccess } from '../reusable-Components/utils';
 import { ToastContainer } from 'react-toastify';
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const Profile = () => {
     const [profile, setProfile] = useState({

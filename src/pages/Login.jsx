@@ -4,7 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import { handleError, handleSuccess } from '../reusable-Components/utils';
 import '../App.css';
 import '../assets/css/login.css';
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const Login = () => {
     const [loginInfo, setLoginInfo] = useState({

@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { handleError, handleSuccess } from '../reusable-Components/utils';
 import '../App.css';
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const Signup = () => {
     const [signupInfo, setSignupInfo] = useState({
