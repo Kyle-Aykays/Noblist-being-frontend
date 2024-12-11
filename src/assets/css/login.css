@@ -1,0 +1,17 @@
+/* *{
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+
+.login-main{
+    max-width: 100vw;
+    height: 100vh;
+    background-image: radial-gradient(at 50% 50%, hsla(210, 100%, 12%, 0.911), hsl(220, 30%, 5%));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-form{
+    background-color: hsla(220, 35%, 3%, 0.4);
+} */
