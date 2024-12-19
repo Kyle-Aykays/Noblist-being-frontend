@@ -19,7 +19,6 @@ const Profile = () => {
         calories: 0,
     });
 
-    const navigate = useNavigate();
 
     // useEffect(() => {
     //     // Retrieve user data after Google OAuth or from localStorage
