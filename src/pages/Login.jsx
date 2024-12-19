@@ -65,7 +65,7 @@ const Login = () => {
 
     // Google OAuth login
     const handleGoogleLogin = () => {
-        window.location.href = `${backendUrl}/auth/google/`;
+        window.location.href = `${backendUrl}/auth/google/callback`;
         setTimeout(() => navigate('/profile'), 2000);
 
     };
