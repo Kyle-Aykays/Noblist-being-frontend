@@ -20,6 +20,7 @@ const Profile = () => {
     const navigate = useNavigate();
 
   useEffect(() => {
+      console.log("Hello i am from the useEffect of the profile,")
     const query = new URLSearchParams(window.location.search);
     const userData = query.get('user');
 
