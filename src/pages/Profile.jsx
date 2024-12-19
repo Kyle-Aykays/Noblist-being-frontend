@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation,useNavigate } from 'react-router-dom';
 import { handleError, handleSuccess } from '../reusable-Components/utils';
 import { ToastContainer } from 'react-toastify';
 import '../assets/css/login.css';
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const Profile = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
     const [profile, setProfile] = useState({
         name: '',
         email: '',
@@ -44,35 +46,28 @@ const Profile = () => {
     // }, [navigate]);
     
   useEffect(() => {
-      console.log("Hello i am from the useEffect of the profile,")
-    const query = new URLSearchParams(window.location.search);
-    const userData = query.get('user');
+        // Retrieve query parameter
+        const query = new URLSearchParams(location.search);
+        const userData = query.get('user');
 
-    if (userData) {
-        try {
-            const parsedUser = JSON.parse(decodeURIComponent(userData));
-            console.log('Parsed user data:', parsedUser); // Debug
-            localStorage.setItem('userId', parsedUser.id); // Save ID for API use
-            setProfile((prevProfile) => ({
-                ...prevProfile,
-                name: parsedUser.name,
-                email: parsedUser.email,
-            }));
-        } catch (error) {
-            console.error('Error parsing user data:', error);
-            handleError('Failed to parse user data. Please log in again.');
+        if (userData) {
+            try {
+                const parsedUser = JSON.parse(decodeURIComponent(userData));
+                setProfile({
+                    name: parsedUser.name,
+                    email: parsedUser.email,
+                });
+                localStorage.setItem('userId', parsedUser.id);
+            } catch (error) {
+                console.error('Error parsing user data:', error);
+                handleError('Failed to parse user data.');
+                navigate('/login');
+            }
+        } else {
+            handleError('No user data found in query parameters.');
             navigate('/login');
         }
-    } else {
-        const userId = localStorage.getItem('userId');
-        if (!userId) {
-            handleError('User ID not found. Please log in again.');
-            navigate('/login'); // Redirect to login if no user data is found
-        } else {
-            fetchProfile();
-        }
-    }
-}, [navigate]);
+    }, [location, navigate]);
 
 
     const fetchProfile = async () => {
