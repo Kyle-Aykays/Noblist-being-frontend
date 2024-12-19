@@ -19,60 +19,60 @@ const Profile = () => {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        // Retrieve user data after Google OAuth or from localStorage
-        const query = new URLSearchParams(window.location.search);
-        const userData = query.get('user');
+    // useEffect(() => {
+    //     // Retrieve user data after Google OAuth or from localStorage
+    //     const query = new URLSearchParams(window.location.search);
+    //     const userData = query.get('user');
 
-        if (userData) {
+    //     if (userData) {
+    //         const parsedUser = JSON.parse(decodeURIComponent(userData));
+    //         localStorage.setItem('userId', parsedUser.id); // Save ID for API use
+    //         setProfile((prevProfile) => ({
+    //             ...prevProfile,
+    //             name: parsedUser.name,
+    //             email: parsedUser.email,
+    //         }));
+    //     } else {
+    //         const userId = localStorage.getItem('userId');
+    //         if (!userId) {
+    //             handleError('User ID not found. Please log in again.');
+    //             navigate('/login'); // Redirect to login if no user data is found
+    //         } else {
+    //             fetchProfile();
+    //         }
+    //     }
+    // }, [navigate]);
+    
+  useEffect(() => {
+      console.log("Hello i am from the useEffect of the profile,")
+    const query = new URLSearchParams(window.location.search);
+    const userData = query.get('user');
+
+    if (userData) {
+        try {
             const parsedUser = JSON.parse(decodeURIComponent(userData));
+            console.log('Parsed user data:', parsedUser); // Debug
             localStorage.setItem('userId', parsedUser.id); // Save ID for API use
             setProfile((prevProfile) => ({
                 ...prevProfile,
                 name: parsedUser.name,
                 email: parsedUser.email,
             }));
-        } else {
-            const userId = localStorage.getItem('userId');
-            if (!userId) {
-                handleError('User ID not found. Please log in again.');
-                navigate('/login'); // Redirect to login if no user data is found
-            } else {
-                fetchProfile();
-            }
+        } catch (error) {
+            console.error('Error parsing user data:', error);
+            handleError('Failed to parse user data. Please log in again.');
+            navigate('/login');
         }
-    }, [navigate]);
-    
-//   useEffect(() => {
-//       console.log("Hello i am from the useEffect of the profile,")
-//     const query = new URLSearchParams(window.location.search);
-//     const userData = query.get('user');
-
-//     if (userData) {
-//         try {
-//             const parsedUser = JSON.parse(decodeURIComponent(userData));
-//             console.log('Parsed user data:', parsedUser); // Debug
-//             localStorage.setItem('userId', parsedUser.id); // Save ID for API use
-//             setProfile((prevProfile) => ({
-//                 ...prevProfile,
-//                 name: parsedUser.name,
-//                 email: parsedUser.email,
-//             }));
-//         } catch (error) {
-//             console.error('Error parsing user data:', error);
-//             handleError('Failed to parse user data. Please log in again.');
-//             navigate('/login');
-//         }
-//     } else {
-//         const userId = localStorage.getItem('userId');
-//         if (!userId) {
-//             handleError('User ID not found. Please log in again.');
-//             navigate('/login'); // Redirect to login if no user data is found
-//         } else {
-//             fetchProfile();
-//         }
-//     }
-// }, [navigate]);
+    } else {
+        const userId = localStorage.getItem('userId');
+        if (!userId) {
+            handleError('User ID not found. Please log in again.');
+            navigate('/login'); // Redirect to login if no user data is found
+        } else {
+            fetchProfile();
+        }
+    }
+}, [navigate]);
 
 
     const fetchProfile = async () => {
