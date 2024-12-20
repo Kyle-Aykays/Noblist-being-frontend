@@ -11,7 +11,7 @@ const Profile = () => {
     const [profile, setProfile] = useState({
         name: '',
         email: '',
-        profilePicture: '	https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIHapIeCiwS7x6LmNiUMsGcyA3R8dgs-nSdQ&s',
+        profilePicture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIHapIeCiwS7x6LmNiUMsGcyA3R8dgs-nSdQ&s',
         weight: '',
         height: '',
         gender: '',
