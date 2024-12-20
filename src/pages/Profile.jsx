@@ -272,13 +272,13 @@ const Profile = () => {
     return (
         <div className="profile-container">
             <h1 className='color-white'>Profile</h1>
-            {{profile.profilePicture && (
+              {/* {profile.profilePicture && (
                 <img
-                    src={profile.profilePicture}
-                    alt="Profile"
-                    style={{ width: '100px', height: '100px', borderRadius: '50%' }}
+                src={profile.profilePicture}
+                alt="Profile"
+                style={{ width: '100px', height: '100px', borderRadius: '50%' }}
                 />
-            )} 
+                )} */}
 
             <div>
                 <div className="main-profile">
@@ -286,12 +286,12 @@ const Profile = () => {
                 <label className='color-white'>Profile Picture:</label>
                 <input type="file" onChange={handleImageUpload} className='color-white' />
                 {profile.profilePicture && (
-                    <img
-                        src={profile.profilePicture}
-                        alt="Profile"
-                        style={{ width: '100px', height: '100px', borderRadius: '50%' }}
-                    />
-                )}
+                            <img
+                                src={profile.profilePicture}
+                                alt="Profile"
+                                style={{ width: '100px', height: '100px', borderRadius: '50%' }}
+                            />
+                        )}
             </div>
 <div className="profile-form-main">
 
