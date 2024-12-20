@@ -11,7 +11,7 @@ const Profile = () => {
     const [profile, setProfile] = useState({
         name: '',
         email: '',
-        profilePicture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIHapIeCiwS7x6LmNiUMsGcyA3R8dgs-nSdQ&s',
+        profilePicture: 'https://cdn1.iconfinder.com/data/icons/content-10/24/user-profile-512.png',
         weight: '',
         height: '',
         gender: '',
@@ -97,7 +97,7 @@ const Profile = () => {
                 setProfile({
                     name: data.name,
                     email: data.email,
-                    profilePicture: data.avatar || 'https://cdn.weatherapi.com/weather/64x64/day/113.png',
+                    profilePicture: data.avatar || 'https://cdn1.iconfinder.com/data/icons/content-10/24/user-profile-512.png',
                     weight: data.weight,
                     height: data.height,
                     gender: data.gender,
@@ -272,13 +272,13 @@ const Profile = () => {
     return (
         <div className="profile-container">
             <h1 className='color-white'>Profile</h1>
-            {/* {profile.profilePicture && (
+            {{profile.profilePicture && (
                 <img
                     src={profile.profilePicture}
                     alt="Profile"
                     style={{ width: '100px', height: '100px', borderRadius: '50%' }}
                 />
-            )} */}
+            )} 
 
             <div>
                 <div className="main-profile">
